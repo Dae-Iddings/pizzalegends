@@ -12,8 +12,23 @@ class Overworld {
         };
         image.src = 'images/maps/DemoLower.png';
         // canvas images stack new things cover up old
-        const x = 0;
-        const y = 0;
+        const x = 5;
+        const y = 6;
+        const shadow = new Image();
+        shadow.onload = () => {
+            this.ctx.drawImage(
+            shadow, 
+            0, 
+            0, 
+            32, 
+            32, 
+            x * 16 - 8, 
+            y * 16 -18, 
+            32, 
+            32,
+            )
+        }
+        shadow.src = 'images/characters/shadow.png'
         const hero = new Image();
         hero.onload = () => {
             this.ctx.drawImage(
@@ -22,8 +37,8 @@ class Overworld {
                 0, // top cut
                 32, // width of cut
                 32, // height of cut
-                x,
-                y,
+                x * 16 - 8, // *16 compensates for background being 16 x 16 and hero being 32 x 32
+                y * 16 -18, // -8 / -18 compensates for extra space around hero
                 32, //size of character 
                 32, //size of character
                 )
