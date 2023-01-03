@@ -6,7 +6,11 @@ class Overworld {
       }
 // code does nothing till init is called
     init() {
-        console.log('Hello from overworld', this)
+        const image = new Image();
+        image.onload = () => {
+        this.ctx.drawImage(image, 0, 0); // what image to draw and x y cord of where to draw starting in top left corner
+        };
+        image.src = 'images/maps/DemoLower.png';
     }
 
 }
